@@ -1,0 +1,18 @@
+version "3.8"
+
+services:
+  person-app:
+    build:
+    container_name: person-app
+    depends_on:
+      - person-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://persondb:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+  person-db:
+    image: postgres
+    container_name: person-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
